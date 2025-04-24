@@ -8,21 +8,29 @@
 <style>
 /* 新增切换按钮样式 */
 .toggle-btn {
-    background: #4a90e2;
-    color: white;
+    background: #f0f6ff;  /* 未选中时浅蓝色背景 */
+    color: #4a90e2;       /* 未选中时蓝色文字 */
     padding: 12px 24px;
     border-radius: 25px;
     cursor: pointer;
     transition: all 0.3s ease;
-    border: 2px solid transparent;
+    border: 2px solid #cce0ff; /* 浅蓝色边框 */
     margin: 20px 0;
+    font-weight: 500;
 }
 .toggle-btn:hover {
-    background: #357abd;
+    background: #e1ecff;  /* 悬停时稍深的浅蓝 */
     transform: translateY(-2px);
 }
 .toggle-btn.active {
-    background: #2c6da4;
+    background: #4a90e2 !important;  /* 选中时深蓝背景 */
+    color: white !important;         /* 选中时白字 */
+    border-color: #357abd !important; /* 深蓝边框 */
+    box-shadow: 0 2px 8px rgba(74, 144, 226, 0.3);
+}
+.toggle-btn.active:hover {
+    background: #357abd !important;  /* 选中悬停时更深蓝 */
+    border-color: #2c6da4;
 }
 
 /* 内容切换相关样式 */
@@ -38,8 +46,8 @@ body{ font-family:"YouYuan" }
 .sequence-btn {
     display: inline-block;
     padding: 14px 28px;
-    background: #4a90e2;
-    color: white !important;
+    background: #f0f6ff;  /* 未选中时浅蓝色背景 */
+    color: #4a90e2;       /* 未选中时蓝色文字 */
     text-decoration: none !important;
     border-radius: 30px;
     font-family: 'Arial', sans-serif;
@@ -50,7 +58,7 @@ body{ font-family:"YouYuan" }
     border: 2px solid transparent;
 }
 .sequence-btn:hover {
-    background: #357abd;
+    background: #e1ecff;  /* 悬停时稍深的浅蓝 */
     transform: translateY(-2px);
     box-shadow: 0 6px 12px rgba(0, 0, 0, 0.15);
 }
@@ -69,11 +77,11 @@ body{ font-family:"YouYuan" }
     <button class="toggle-btn active" onclick="toggleContent(0)">深境螺旋</button>
     <button class="toggle-btn" onclick="toggleContent(1)" style="margin-left: 20px;">真境剧诗</button>
   </div>
-        <div style="display: flex; align-items: center; margin: 20px 0;">
-        <div style="flex-grow: 1; height: 1px; background-color: #ddd;"></div>
-        <span style="padding: 0 10px; color: #999;">❖</span>
-        <div style="flex-grow: 1; height: 1px; background-color: #ddd;"></div>
-      </div>
+  <div style="display: flex; align-items: center; margin: 20px 0;">
+    <div style="flex-grow: 1; height: 1px; background-color: #ddd;"></div>
+    <span style="padding: 0 10px; color: #999;">❖</span>
+    <div style="flex-grow: 1; height: 1px; background-color: #ddd;"></div>
+  </div>
   <!-- 将原有内容改为可切换区块 -->
   <div class="content-section active" id="section-0">
     <!-- 原第一区块内容 -->
@@ -88,7 +96,7 @@ body{ font-family:"YouYuan" }
     <div class="button-container">
       <a href="https://docs.qq.com/form/page/sequence/DVENzU3RMdHp3bVhV" 
          class="sequence-btn" target="_blank">
-          深境螺旋排队/查询自己序号(右上角登陆腾讯文档)
+          [点击]深境螺旋[排队]或[查询]自己序号(右上角登陆腾讯文档)
       </a>
     </div>
   </div>
@@ -106,7 +114,7 @@ body{ font-family:"YouYuan" }
     <div class="button-container">
       <a href="https://docs.qq.com/form/page/sequence/DVExsTVFjYUxJdUho" 
          class="sequence-btn" target="_blank">
-          真境剧诗排队/查询自己序号(右上角登陆腾讯文档)
+         [点击]真境剧诗[排队]或[查询]自己序号(右上角登陆腾讯文档)
       </a>
     </div>
   </div>

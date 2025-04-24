@@ -6,69 +6,62 @@
     <title>群排队序号</title>
 </head>
 <style>
-body{
-    font-family:"YouYuan"
-
+/* 新增切换按钮样式 */
+.toggle-btn {
+    background: #4a90e2;
+    color: white;
+    padding: 12px 24px;
+    border-radius: 25px;
+    cursor: pointer;
+    transition: all 0.3s ease;
+    border: 2px solid transparent;
+    margin: 20px 0;
 }
-  /* 基础按钮样式 */
-        .sequence-btn {
-            display: inline-block;
-            padding: 14px 28px;
-            background: #4a90e2;
-            color: white !important;
-            text-decoration: none !important;
-            border-radius: 30px;
-            font-family: 'Arial', sans-serif;
-            font-size: 16px;
-            font-weight: 500;
-            transition: all 0.3s ease;
-            box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
-            border: 2px solid transparent;
-        }
+.toggle-btn:hover {
+    background: #357abd;
+    transform: translateY(-2px);
+}
+.toggle-btn.active {
+    background: #2c6da4;
+}
 
-        .sequence-btn:hover {
-            background: #357abd;
-            transform: translateY(-2px);
-            box-shadow: 0 6px 12px rgba(0, 0, 0, 0.15);
-        }
+/* 内容切换相关样式 */
+.content-section {
+    display: none;
+}
+.content-section.active {
+    display: block;
+}
 
-        .sequence-btn:active {
-            transform: translateY(1px);
-            box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
-        }
-
-        .button-container {
-            display: flex;
-            justify-content: center;
-            align-items: center;
-            min-height: 10vh; /* 保留垂直居中 */
-        }
+/* 原有样式保留 */
+body{ font-family:"YouYuan" }
+.sequence-btn {
+    display: inline-block;
+    padding: 14px 28px;
+    background: #4a90e2;
+    color: white !important;
+    text-decoration: none !important;
+    border-radius: 30px;
+    font-family: 'Arial', sans-serif;
+    font-size: 16px;
+    font-weight: 500;
+    transition: all 0.3s ease;
+    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+    border: 2px solid transparent;
+}
+.sequence-btn:hover {
+    background: #357abd;
+    transform: translateY(-2px);
+    box-shadow: 0 6px 12px rgba(0, 0, 0, 0.15);
+}
+.button-container {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    min-height: 10vh;
+}
 </style>
 <body>
-  <script>
-    function showTime() {
-var now = new Date();
-var month = now.getMonth()+1
-var trealshengjing = new Date("5/16/2025");
-trealshengjing.setFullYear(now.getFullYear());
-trealshengjing.setMonth(now.getMonth()+1);
-var tshengjingleft = trealshengjing.getTime()-now.getTime();
-var dedayshengjing = Math.floor(tshengjingleft/(3600000*24));
-var dehoursshengjing = Math.ceil((tshengjingleft%(3600000*24))/3600000)+4;
-//-----------------------------------------------
-var trealzhenjing = new Date("5/1/2025");
-trealzhenjing.setFullYear(now.getFullYear());
-trealzhenjing.setMonth(now.getMonth()+1);
-var tzhenjingleft = trealzhenjing.getTime()-now.getTime();
-var dedayzhenjing = Math.floor(tzhenjingleft/(3600000*24));
-var dehourszhenjing = Math.ceil((tzhenjingleft%(3600000*24))/3600000)+4;
-document.getElementById("time").innerHTML =  dedayshengjing + "日 " + dehoursshengjing + "小时";
-document.getElementById("time2").innerHTML =  dedayzhenjing + "日 " + dehourszhenjing + "小时";
-document.getElementById("month").innerHTML = month;
-document.getElementById("month2").innerHTML = month;
-}
-setInterval(showTime, 1000);
-  </script>
     <h1 style="color: pink;text-align:center"><span style="color: lightblue;">目前直播间状态</span>下播</h1>
     <h1 style="color: lightblue;text-align:center"><span style="color: pink;">如需开播</span>可直接群里@群主开播</h1>
         <div style="display: flex; align-items: center; margin: 20px 0;">
@@ -76,51 +69,85 @@ setInterval(showTime, 1000);
         <span style="padding: 0 10px; color: #999;">❖</span>
         <div style="flex-grow: 1; height: 1px; background-color: #ddd;"></div>
       </div>
+  <!-- 新增切换按钮容器 -->
+  <div class="button-container">
+    <button class="toggle-btn active" onclick="toggleContent(0)">深境螺旋</button>
+    <button class="toggle-btn" onclick="toggleContent(1)" style="margin-left: 20px;">真境剧诗</button>
+  </div>
+
+  <!-- 将原有内容改为可切换区块 -->
+  <div class="content-section active" id="section-0">
+    <!-- 原第一区块内容 -->
     <h1 style="color: lightblue;text-align:center"><span style="color: pink;" id="month"></span>月<span style="color: pink;">深境螺旋</span></h1>
     <h3 style="color: lightblue;text-align:center">（剩余<span id="time" style="color: pink;"></span>刷新）</h3>
     <h1 style="color: lightblue;text-align:center">群排队序号：</h1>
-<!--                       
-    
--->
     <p style="color: pink;text-align:center;font-size:64px"><b>22号</b></p>
-<!--                       
-    
--->
     <div class="button-container">
       <a href="https://docs.qq.com/form/page/sequence/DVENzU3RMdHp3bVhV" 
-         class="sequence-btn"
-         target="_blank">  <!-- 新标签页打开 -->
-          点击排队/查询自己序号(右上角登陆腾讯文档)
+         class="sequence-btn" target="_blank">
+          深境螺旋排队/查询自己序号(右上角登陆腾讯文档)
       </a>
     </div>
-        <div style="display: flex; align-items: center; margin: 20px 0;">
-        <div style="flex-grow: 1; height: 1px; background-color: #ddd;"></div>
-        <span style="padding: 0 10px; color: #999;">❖</span>
-        <div style="flex-grow: 1; height: 1px; background-color: #ddd;"></div>
-      </div>
+  </div>
+
+  <div class="content-section" id="section-1">
+    <!-- 原第二区块内容 -->
     <h1 style="color: lightblue;text-align:center"><span style="color: pink;" id="month2"></span>月<span style="color: pink;">真境剧诗</span></h1>
     <h3 style="color: lightblue;text-align:center">（剩余<span id="time2" style="color: pink;"></span>刷新）</h3>
     <h1 style="color: lightblue;text-align:center">群排队序号：</h1>
-<!--                       
-    
--->
     <p style="color: pink;text-align:center;font-size:64px"><b>27号</b></p>
-<!--                       
-    
--->
     <div class="button-container">
       <a href="https://docs.qq.com/form/page/sequence/DVExsTVFjYUxJdUho" 
-         class="sequence-btn"
-         target="_blank">  <!-- 新标签页打开 -->
-          点击排队/查询自己序号(右上角登陆腾讯文档)
+         class="sequence-btn" target="_blank">
+          真境剧诗排队/查询自己序号(右上角登陆腾讯文档)
       </a>
     </div>
-    <div style="display: flex; align-items: center; margin: 20px 0;">
-    <div style="flex-grow: 1; height: 1px; background-color: #ddd;"></div>
-    <span style="padding: 0 10px; color: #999;">❖</span>
-    <div style="flex-grow: 1; height: 1px; background-color: #ddd;"></div>
   </div>
-  </div>
+
+  <!-- 其他保留内容 -->
+  <script>
+    // 新增切换功能
+    function toggleContent(index) {
+        // 切换按钮状态
+        document.querySelectorAll('.toggle-btn').forEach((btn, i) => {
+            btn.classList.toggle('active', i === index);
+        });
+        
+        // 切换内容显示
+        document.querySelectorAll('.content-section').forEach((section, i) => {
+            section.classList.toggle('active', i === index);
+        });
+    }
+
+    // 原有时间更新代码
+    function showTime() {
+        var now = new Date();
+        var month = now.getMonth()+1
+        var trealshenjing = new Date("5/16/2025");
+        trealshenjing.setFullYear(now.getFullYear());
+        trealshenjing.setMonth(now.getMonth()+1);
+        var tshenjingleft = trealshenjing.getTime()-now.getTime();
+        var dedayshenjing = Math.floor(tshenjingleft/(3600000*24));
+        var dehoursshenjing = Math.ceil((tshenjingleft%(3600000*24))/3600000)+4;
+        
+        var trealzhenjing = new Date("5/1/2025");
+        trealzhenjing.setFullYear(now.getFullYear());
+        trealzhenjing.setMonth(now.getMonth()+1);
+        var tzhenjingleft = trealzhenjing.getTime()-now.getTime();
+        var dedayzhenjing = Math.floor(tzhenjingleft/(3600000*24));
+        var dehourszhenjing = Math.ceil((tzhenjingleft%(3600000*24))/3600000)+4;
+        
+        document.getElementById("time").innerHTML =  dedayshenjing + "日 " + dehoursshenjing + "小时";
+        document.getElementById("time2").innerHTML =  dedayzhenjing + "日 " + dehourszhenjing + "小时";
+        document.getElementById("month").innerHTML = month;
+        document.getElementById("month2").innerHTML = month;
+    }
+    setInterval(showTime, 1000);
+  </script>
+
+  <!-- 以下保留原有其他内容 -->
+
+  <!-- ...其他保持不变的代码... -->
   <div style="text-align: center;">
     <img src="https://upload-bbs.miyoushe.com/upload/2023/11/09/337468333/fe86cd418116be6bc77297b646e015ec_7538281799760698840.gif" alt="" >
   </div>

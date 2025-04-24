@@ -45,6 +45,27 @@ body{
         }
 </style>
 <body>
+  <script>
+    function showTime() {
+var now = new Date();
+var trealshengjing = new Date("5/16/2025");
+trealshengjing.setFullYear(now.getFullYear());
+trealshengjing.setMonth(now.getMonth()+1);
+var tshengjingleft = trealshengjing.getTime()-now.getTime();
+var dedayshengjing = Math.floor(tshengjingleft/(3600000*24));
+var dehoursshengjing = Math.ceil((tshengjingleft%(3600000*24))/3600000)+4;
+//-----------------------------------------------
+var trealzhenjing = new Date("5/1/2025");
+trealzhenjing.setFullYear(now.getFullYear());
+trealzhenjing.setMonth(now.getMonth()+1);
+var tzhenjingleft = trealzhenjing.getTime()-now.getTime();
+var dedayzhenjing = Math.floor(tzhenjingleft/(3600000*24));
+var dehourszhenjing = Math.ceil((tzhenjingleft%(3600000*24))/3600000)+4;
+document.getElementById("time").innerHTML =  dedayshengjing + "日 " + dehoursshengjing + "小时";
+document.getElementById("time2").innerHTML =  dedayzhenjing + "日 " + dehourszhenjing + "小时";
+}
+setInterval(showTime, 1000);
+  </script>
     <h1 style="color: pink;text-align:center"><span style="color: lightblue;">目前直播间状态</span>下播</h1>
     <h1 style="color: lightblue;text-align:center"><span style="color: pink;">如需开播</span>可直接群里@群主开播</h1>
         <div style="display: flex; align-items: center; margin: 20px 0;">
@@ -52,7 +73,7 @@ body{
         <span style="padding: 0 10px; color: #999;">❖</span>
         <div style="flex-grow: 1; height: 1px; background-color: #ddd;"></div>
       </div>
-    <h1 style="color: lightblue;text-align:center"><span style="color: pink;">4</span>月<span style="color: pink;">深境螺旋</span></h1>
+    <h1 style="color: lightblue;text-align:center"><span style="color: pink;">4</span>月<span style="color: pink;">深境螺旋</span><span>（剩余<span id="time" style="color: pink;"></span>刷新）</span></h1>
     <h1 style="color: lightblue;text-align:center">群排队序号：</h1>
     <h2 style="color: pink;text-align:center">22号</h2>
     <div class="button-container">
@@ -61,13 +82,13 @@ body{
          target="_blank">  <!-- 新标签页打开 -->
           点击排队/查询自己序号(右上角登陆腾讯文档)
       </a>
-  </div>
+    </div>
         <div style="display: flex; align-items: center; margin: 20px 0;">
         <div style="flex-grow: 1; height: 1px; background-color: #ddd;"></div>
         <span style="padding: 0 10px; color: #999;">❖</span>
         <div style="flex-grow: 1; height: 1px; background-color: #ddd;"></div>
       </div>
-    <h1 style="color: lightblue;text-align:center"><span style="color: pink;">4</span>月<span style="color: pink;">真境剧诗</span></h1>
+    <h1 style="color: lightblue;text-align:center"><span style="color: pink;">4</span>月<span style="color: pink;">深境螺旋</span><span>（剩余<span id="time2" style="color: pink;"></span>刷新）</span></h1>
     <h1 style="color: lightblue;text-align:center">群排队序号：</h1>
     <h2 style="color: pink;text-align:center">27号</h2>
     <div class="button-container">

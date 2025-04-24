@@ -48,6 +48,7 @@ body{
   <script>
     function showTime() {
 var now = new Date();
+var month = now.getMonth()+1
 var trealshengjing = new Date("5/16/2025");
 trealshengjing.setFullYear(now.getFullYear());
 trealshengjing.setMonth(now.getMonth()+1);
@@ -63,6 +64,8 @@ var dedayzhenjing = Math.floor(tzhenjingleft/(3600000*24));
 var dehourszhenjing = Math.ceil((tzhenjingleft%(3600000*24))/3600000)+4;
 document.getElementById("time").innerHTML =  dedayshengjing + "日 " + dehoursshengjing + "小时";
 document.getElementById("time2").innerHTML =  dedayzhenjing + "日 " + dehourszhenjing + "小时";
+document.getElementById("month").innerHTML = month;
+document.getElementById("month2").innerHTML = month;
 }
 setInterval(showTime, 1000);
   </script>
@@ -73,9 +76,15 @@ setInterval(showTime, 1000);
         <span style="padding: 0 10px; color: #999;">❖</span>
         <div style="flex-grow: 1; height: 1px; background-color: #ddd;"></div>
       </div>
-    <h1 style="color: lightblue;text-align:center"><span style="color: pink;">4</span>月<span style="color: pink;">深境螺旋</span><span>（剩余<span id="time" style="color: pink;"></span>刷新）</span></h1>
+    <h1 style="color: lightblue;text-align:center"><span style="color: pink;" id="month"></span>月<span style="color: pink;">深境螺旋</span><span>（剩余<span id="time" style="color: pink;"></span>刷新）</span></h1>
     <h1 style="color: lightblue;text-align:center">群排队序号：</h1>
+<!--                       
+    
+-->>
     <h2 style="color: pink;text-align:center">22号</h2>
+<!--                       
+    
+-->>
     <div class="button-container">
       <a href="https://docs.qq.com/form/page/sequence/DVENzU3RMdHp3bVhV" 
          class="sequence-btn"
@@ -88,9 +97,15 @@ setInterval(showTime, 1000);
         <span style="padding: 0 10px; color: #999;">❖</span>
         <div style="flex-grow: 1; height: 1px; background-color: #ddd;"></div>
       </div>
-    <h1 style="color: lightblue;text-align:center"><span style="color: pink;">4</span>月<span style="color: pink;">深境螺旋</span><span>（剩余<span id="time2" style="color: pink;"></span>刷新）</span></h1>
+    <h1 style="color: lightblue;text-align:center"><span style="color: pink;" id="month2"></span>月<span style="color: pink;">深境螺旋</span><span>（剩余<span id="time2" style="color: pink;"></span>刷新）</span></h1>
     <h1 style="color: lightblue;text-align:center">群排队序号：</h1>
+<!--                       
+    
+-->>
     <h2 style="color: pink;text-align:center">27号</h2>
+<!--                       
+    
+-->>
     <div class="button-container">
       <a href="https://docs.qq.com/form/page/sequence/DVExsTVFjYUxJdUho" 
          class="sequence-btn"

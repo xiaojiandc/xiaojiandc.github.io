@@ -21,7 +21,19 @@
             height: 10vh;
             margin: 0;
         }
-
+        .floating-image {
+            position: fixed; /* 关键定位属性 */
+            bottom: 200px;   /* 距离底部10px */
+            left: 43%;      /* 水平居中开始位置 */
+            transform: translateX(-50%); /* 精准水平居中 */
+            width: 100px;   /* 图片宽度（根据需求调整） */
+            height: auto;   /* 高度自适应 */
+            z-index: 9999;  /* 确保在最顶层 */
+            cursor: pointer;
+            transition: all 0.3s ease;
+            border-radius: 8px; /* 可选圆角 */
+            box-shadow: 0 4px 12px rgba(0,0,0,0.2); /* 可选阴影 */
+        }
         .magic-link {
             display: inline-block;
             width: 300px;
@@ -240,7 +252,7 @@
     <!-- 音频元素（隐藏） -->
     <audio id="clickSound" src="https://assets.mixkit.co/sfx/preview/mixkit-arcade-game-jump-coin-216.mp3" preload="auto"></audio>
     
-    <div>
+    <div class="floating-image">
         <a class="magic-link" id="specialLink" href="https://live.bilibili.com/12792863"></a>
     </div>
     <script>

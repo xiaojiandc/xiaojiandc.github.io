@@ -24,7 +24,7 @@
         .floating-image {
             position: fixed; /* 关键定位属性 */
             bottom: 200px;   /* 距离底部10px */
-            left: 43%;      /* 水平居中开始位置 */
+            left: 10%;      /* 水平居中开始位置 */
             transform: translateX(-50%); /* 精准水平居中 */
             width: 100px;   /* 图片宽度（根据需求调整） */
             height: auto;   /* 高度自适应 */
@@ -124,7 +124,13 @@
         }
         
         /* 原有样式保留 */
-        body{ font-family:"YouYuan" }
+        body{ font-family:"YouYuan" 
+    }
+    body::after {
+  content: "";
+  display: block;
+  height: 500px; /* 空白高度 */
+}
         .sequence-btn {
             display: inline-block;
             padding: 14px 28px;

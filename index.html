@@ -44,9 +44,10 @@
             margin: 0;
         }
         .floating-image {
-            position: fixed; /* 关键定位属性 */
+            display: flex;
+            position: absolute; /* 关键定位属性 */
             bottom: 200px;   /* 距离底部10px */
-            left: 10%;      /* 水平居中开始位置 */
+            left: 43%;      /* 水平居中开始位置 */
             transform: translateX(-50%); /* 精准水平居中 */
             width: 100px;   /* 图片宽度（根据需求调整） */
             height: auto;   /* 高度自适应 */
@@ -69,7 +70,6 @@
             top: 80%;
             left: 42%;
             overflow: visible;
-            display: inline-block;
         }
         /* 新增完整文字样式（放在.magic-link样式之后） */
         .magic-link::after {

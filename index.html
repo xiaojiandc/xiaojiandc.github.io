@@ -5,22 +5,9 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>群排队序号</title>
     <style>
-                .vertical-text {
-            position: absolute;
-            right: 40px; /* 距离右侧距离 */
-            top: 200px;    /* 垂直居中 */
-            transform: translateY(-50%); /* 精准居中 */
-            
-            writing-mode: vertical-rl; /* 关键属性：垂直排列 */
-            text-orientation: mixed;   /* 保持中文正常方向 */
-            
-            /* 文字样式 */
-            font-size: 24px;
-            color: lightpink;
-            letter-spacing: 8px; /* 字间距 */
-            font-weight: bold;
-            text-shadow: 0 2px 4px rgba(0,0,0,0.2);
-        }
+            .footer {
+    margin-top: auto; /* 自动推到底部 */
+}
             a, a img {
     -webkit-tap-highlight-color: transparent; /* 安卓/Chrome */
     -webkit-touch-callout: none; /* iOS Safari */
@@ -38,6 +25,7 @@
 }   
         .container {
             display: flex;
+            flex-direction: column;
             justify-content: center;
             align-items: center;
             height: 10vh;
@@ -61,21 +49,21 @@
             display: inline-block;
             width: 300px;
             height: 200px;
-            transition: all 0.1s ease;
+            transition: all 0.2s ease;
             background-image: url("https://upload-bbs.miyoushe.com/upload/2023/11/09/337468333/fe86cd418116be6bc77297b646e015ec_7538281799760698840.gif");
             background-size: cover;
             cursor: pointer;
             border-radius: 10px;
             position:absolute;
-            top: 80%;
-            left: 42%;
             overflow: visible;
+            bottom: -400px;
+            left: 5px;
         }
         /* 新增完整文字样式（放在.magic-link样式之后） */
         .magic-link::after {
     content: "↓进入直播间↓";
     position: absolute;
-    top: -30px; /* 文字出现在图片上方30px处（根据需求调整） */
+    top: -50px; /* 文字出现在图片上方30px处（根据需求调整） */
     left: 50%;
     transform: translateX(-50%); /* 水平居中 */
     white-space: nowrap; /* 防止文字换行 */
@@ -92,16 +80,6 @@
     align-items: center;
     justify-content: center;
 }
-        .magic-link::before {
-        content: "捏芙芙脸蛋进入直播间";
-        position:absolute;
-        transform: translate(40%, 5%);
-        color: red;
-        padding: 8px 16px;
-        font-family: Arial;
-        font-size: 14px;
-        }
-
         .magic-link.scale1 { transform: scale(1.2); }
         .magic-link.scale2 { transform: scale(1.4); }
         .magic-link.scale3 { 
@@ -182,7 +160,6 @@ body::after {
         </style>
 </head>
 <body>
-    <div class="vertical-text">下方按钮查询序号→</div>
   <!-- 新增切换按钮容器 -->
     <div class="button-container">
     <button class="toggle-btn active" onclick="toggleContent(0)">深境螺旋</button>
@@ -223,10 +200,13 @@ body::after {
 -->
     <p style="color: pink;text-align:center;font-size:64px"><b>27号</b></p>
     <div class="button-container">
-      <a href="https://docs.qq.com/form/page/sequence/DVExsTVFjYUxJdUho" 
-         class="sequence-btn" target="_blank">
-         <b>[点击]<span style="color: red;">真境剧诗</span>[排队]或[查询]自己序号(右上角登陆腾讯文档)</b>
-      </a>
+        <div class="footer">
+            <a href="https://docs.qq.com/form/page/sequence/DVExsTVFjYUxJdUho" 
+            class="sequence-btn" target="_blank">
+            <b>[点击]<span style="color: red;">真境剧诗</span>[排队]或[查询]自己序号(右上角登陆腾讯文档)</b>
+         </a>
+        </div>
+
     </div>
   </div>
 
@@ -279,8 +259,10 @@ body::after {
     <!-- 音频元素（隐藏） -->
     <audio id="clickSound" src="https://assets.mixkit.co/sfx/preview/mixkit-arcade-game-jump-coin-216.mp3" preload="auto"></audio>
     
-    <div>
-        <a class="magic-link" id="specialLink" href="https://live.bilibili.com/12792863"></a>
+    <div class="container">
+        <div class="footer">        
+            <a class="magic-link" id="specialLink" href="https://live.bilibili.com/12792863"></a>
+        </div>
     </div>
     <script>
         let clickCount = 0;

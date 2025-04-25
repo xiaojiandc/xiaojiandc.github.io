@@ -5,6 +5,22 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>群排队序号</title>
     <style>
+                .vertical-text {
+            position: absolute;
+            right: 40px; /* 距离右侧距离 */
+            top: 200px;    /* 垂直居中 */
+            transform: translateY(-50%); /* 精准居中 */
+            
+            writing-mode: vertical-rl; /* 关键属性：垂直排列 */
+            text-orientation: mixed;   /* 保持中文正常方向 */
+            
+            /* 文字样式 */
+            font-size: 24px;
+            color: lightpink;
+            letter-spacing: 8px; /* 字间距 */
+            font-weight: bold;
+            text-shadow: 0 2px 4px rgba(0,0,0,0.2);
+        }
             a, a img {
     -webkit-tap-highlight-color: transparent; /* 安卓/Chrome */
     -webkit-touch-callout: none; /* iOS Safari */
@@ -65,7 +81,7 @@
     white-space: nowrap; /* 防止文字换行 */
     
     /* 视觉样式 */
-    color: red;
+    color: lightpink;
     font-weight: bold;
     font-size: 32px;
     padding: 4px 12px;
@@ -130,9 +146,9 @@
         }
         
         /* 原有样式保留 */
-        body{ font-family:"YouYuan" 
+body{ font-family:"YouYuan" 
     }
-    body::after {
+body::after {
   content: "";
   display: block;
   height: 500px; /* 空白高度 */
@@ -166,18 +182,19 @@
         </style>
 </head>
 <body>
+    <div class="vertical-text">下方按钮排队→</div>
   <!-- 新增切换按钮容器 -->
-  <div class="button-container">
+    <div class="button-container">
     <button class="toggle-btn active" onclick="toggleContent(0)">深境螺旋</button>
     <button class="toggle-btn" onclick="toggleContent(1)" style="margin-left: 20px;">真境剧诗</button>
-  </div>
-  <div style="display: flex; align-items: center; margin: 20px 0;">
+</div>
+    <div style="display: flex; align-items: center; margin: 20px 0;">
     <div style="flex-grow: 1; height: 1px; background-color: #ddd;"></div>
     <span style="padding: 0 10px; color: #999;">❖</span>
     <div style="flex-grow: 1; height: 1px; background-color: #ddd;"></div>
   </div>
   <!-- 将原有内容改为可切换区块 -->
-  <div class="content-section active" id="section-0">
+    <div class="content-section active" id="section-0">
     <!-- 原第一区块内容 -->
     <h1 style="color: lightblue;text-align:center"><span style="color: pink;" id="month"></span>月<span style="color: pink;">深境螺旋</span></h1>
     <h3 style="color: lightblue;text-align:center">（剩余<span id="time" style="color: pink;"></span>刷新）</h3>

@@ -6,6 +6,61 @@
     <title>群排队序号</title>
 </head>
 <style>
+    .centered{
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height: 5vh;
+    padding: 30px;
+    font-size: 40px;
+    color: red;
+}
+    .container {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height: 10vh;
+}
+    .magic-link {
+        display: inline-block;
+        position: relative;
+        width: 300px;
+        height: 200px;
+        transition: all 0.3s ease;
+        background-image: url("https://upload-bbs.miyoushe.com/upload/2023/11/09/337468333/fe86cd418116be6bc77297b646e015ec_7538281799760698840.gif");
+        background-size: cover;
+        cursor: pointer;
+        border-radius: 10px;
+        overflow: hidden;
+    }
+
+    .magic-link::before {
+        content: "捏3次芙芙进入直播间";
+        position:absolute;
+        transform: translate(50%, 50%);
+        color: white;
+        background: rgba(0,0,0,0.5);
+        padding: 8px 16px;
+        border-radius: 20px;
+        font-family: Arial;
+        font-size: 14px;
+        backdrop-filter: blur(2px);
+    }
+
+    .magic-link.scale1 {
+        transform: scale(1.2);
+    }
+
+    .magic-link.scale2 {
+        transform: scale(1.4);
+    }
+
+    .magic-link.scale3 {
+        transform: scale(1.6);
+        box-shadow: 0 0 20px rgba(74, 144, 226, 0.5);
+    }
+</style>
+<style>
 /* 新增切换按钮样式 */
 .toggle-btn {
     background: #f0f6ff;  /* 未选中时浅蓝色背景 */
@@ -55,7 +110,6 @@ body{ font-family:"YouYuan" }
     font-weight: 500;
     transition: all 0.3s ease;
     box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
-    border: 2px solid transparent;
 }
 .sequence-btn:hover {
     background: #e1ecff;  /* 悬停时稍深的浅蓝 */
@@ -66,7 +120,9 @@ body{ font-family:"YouYuan" }
     display: flex;
     justify-content: center;
     align-items: center;
-    min-height: 10vh;
+    min-height: auto; /* 移除固定高度 */
+    padding: 2px 0; /* 只保留20px的上下间距 */
+    margin: 0;
 }
 </style>
 <body>
@@ -96,7 +152,7 @@ body{ font-family:"YouYuan" }
     <div class="button-container">
       <a href="https://docs.qq.com/form/page/sequence/DVENzU3RMdHp3bVhV" 
          class="sequence-btn" target="_blank">
-          [点击]深境螺旋[排队]或[查询]自己序号(右上角登陆腾讯文档)
+         <b>[点击]<span style="color: red;">深境螺旋</span>[排队]或[查询]自己序号(右上角登陆腾讯文档)</b>
       </a>
     </div>
   </div>
@@ -114,7 +170,7 @@ body{ font-family:"YouYuan" }
     <div class="button-container">
       <a href="https://docs.qq.com/form/page/sequence/DVExsTVFjYUxJdUho" 
          class="sequence-btn" target="_blank">
-         [点击]真境剧诗[排队]或[查询]自己序号(右上角登陆腾讯文档)
+         <b>[点击]<span style="color: red;">真境剧诗</span>[排队]或[查询]自己序号(右上角登陆腾讯文档)</b>
       </a>
     </div>
   </div>
@@ -166,9 +222,39 @@ body{ font-family:"YouYuan" }
 <span style="padding: 0 10px; color: #999;">❖</span>
 <div style="flex-grow: 1; height: 1px; background-color: #ddd;"></div>
 </div>
-  <!-- ...其他保持不变的代码... -->
-  <div style="text-align: center;">
-    <img src="https://upload-bbs.miyoushe.com/upload/2023/11/09/337468333/fe86cd418116be6bc77297b646e015ec_7538281799760698840.gif" alt="" >
-  </div>
+<div><p class="centered"><b>↓ ↓ ↓进入直播间↓ ↓ ↓</b></p></div>
+<div class="centered">
+    <a class="magic-link" id="specialLink" href="https://live.bilibili.com/12792863"></a>
+</div>
+<script>
+    let clickCount = 0;
+    const link = document.getElementById('specialLink');
+    const maxClicks = 3;
+
+    link.addEventListener('click', function(e) {
+        e.preventDefault();
+        
+        clickCount++;
+        
+        // 更新提示文字
+        const remaining = maxClicks - clickCount;
+        this.style.setProperty('--text', `"还剩 ${remaining} 次点击"`);
+        
+        if(clickCount <= maxClicks) {
+            // 添加缩放类
+            this.classList.add(`scale${clickCount}`);
+            
+            // 自动移除之前的缩放类（保持最新状态）
+            setTimeout(() => {
+                this.classList.remove(`scale${clickCount - 1}`);
+            }, 300);
+        }
+
+        // 第四次点击执行跳转
+        if(clickCount > maxClicks) {
+            window.location.href = this.href;
+        }
+    });
+</script>
 </body>
 </html>
